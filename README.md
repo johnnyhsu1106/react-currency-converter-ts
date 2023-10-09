@@ -1,5 +1,5 @@
 # Getting Started
-This is a currency conventer built based on React.
+This is a currency conventer built based on React + TypeScript
 
 Checkout this repo, install dependencies, then start the gulp process with the following:
 ```
