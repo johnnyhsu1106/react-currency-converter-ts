@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { useCurrencyContext, ICurrencyContext } from '../context/CurrencyContext';
+import { useCurrencyContext } from '../context/CurrencyContext';
 import style from './CurrencyConverter.module.css';
 import { CurrencyRowType } from '../types/types';
 
@@ -15,7 +15,7 @@ const CurrencyDropdown = ({ rowType }: CurrencyDropdownProps) => {
     toCurrency,
     handleFromCurrencySelect,
     handleToCurrencySelect,
-  }: ICurrencyContext = useCurrencyContext();
+  } = useCurrencyContext();
   
   const isFromRow: boolean = rowType === 'from';
   const selectedCurrency: string = isFromRow ? fromCurrency : toCurrency;

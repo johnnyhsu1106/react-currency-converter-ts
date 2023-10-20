@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export interface ICurrencyContext {
-  isLoading: boolean;
   isError: boolean;
   currencyOptions: string[];
   fromAmount: number;
@@ -33,14 +32,12 @@ const CurrencyProvider = ({ children } : { children: ReactNode}) => {
   const [amount, setAmount] = useState<number>(1);
   const [exchangeRate, setExchangeRate] = useState<number>(1);
   const [amountInFromCurrency, setAmountInFromCurrency] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
   // Get Derived States
   const fromAmount: number = amountInFromCurrency ? amount : amount / exchangeRate; 
   const toAmount: number = amountInFromCurrency ? amount * exchangeRate : amount;
-
-
+  
   // Get Currency Options 
   useEffect(() => {
 
@@ -67,10 +64,7 @@ const CurrencyProvider = ({ children } : { children: ReactNode}) => {
     .catch((err) => {
       setIsError(true);
       console.error(err);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    })
+    });
   }, []);
 
   // Get Exchange at first and Update Exchange Rate if fromCurrency or toCurrency is changed.
@@ -133,7 +127,6 @@ const CurrencyProvider = ({ children } : { children: ReactNode}) => {
   };
   
   const value: ICurrencyContext = {
-    isLoading,
     isError,
     currencyOptions,
     fromAmount,

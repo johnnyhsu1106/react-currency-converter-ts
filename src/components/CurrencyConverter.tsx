@@ -1,17 +1,12 @@
 import CurrencyRow from './CurrencyRow';
-import { useCurrencyContext, ICurrencyContext } from '../context/CurrencyContext';
+import { useCurrencyContext } from '../context/CurrencyContext';
 import style from './CurrencyConverter.module.css';
 import { CurrencyRowType } from '../types/types';
 
 const CurrencyConverter = () => {
   const {
-    isLoading,
     isError,
-  }: ICurrencyContext = useCurrencyContext();
-  
-  if (isLoading) {
-    return <p>Loading...</p>
-  }
+  } = useCurrencyContext();
 
   if (isError) {
     return <p>Something goes wrong</p>

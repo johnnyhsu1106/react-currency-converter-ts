@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { useCurrencyContext, ICurrencyContext } from '../context/CurrencyContext';
+import { useCurrencyContext } from '../context/CurrencyContext';
 import style from './CurrencyConverter.module.css';
 import { CurrencyRowType } from '../types/types';
 
@@ -13,7 +13,7 @@ const CurrencyInput = ({ rowType } : CurrencyInputProps) => {
     toAmount,
     handleFromAmountChange,
     handleToAmountChange,
-  }: ICurrencyContext = useCurrencyContext();
+  } = useCurrencyContext();
   
   const isFromRow = rowType === 'from';
   const amount = isFromRow ? fromAmount : toAmount;
